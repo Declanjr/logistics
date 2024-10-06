@@ -1,0 +1,124 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
+}
+
+/* Hero Section */
+.hero {
+    background: url('hero-bg.jpg') center/cover no-repeat;
+    padding: 100px 20px;
+    text-align: center;
+    color: #fff;
+}
+.hero h1 {
+    font-size: 3em;
+    margin: 0;
+}
+.hero p {
+    font-size: 1.2em;
+    margin: 10px 0 20px;
+}
+.cta, .cta-secondary {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+.cta {
+    background-color: #28a745;
+}
+.cta-secondary {
+    background-color: #007bff;
+}
+
+/* About Us Section */
+.about {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+}
+.about h2 {
+    margin-bottom: 20px;
+}
+
+/* Services Section */
+.services {
+    padding: 60px 20px;
+    text-align: center;
+}
+.services .service {
+    display: inline-block;
+    width: 45%;
+    margin: 10px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+.services h2, .services h3 {
+    color: #007bff;
+}
+
+/* Why Choose Us Section */
+.why-choose-us {
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+.why-choose-us .feature {
+    display: inline-block;
+    width: 45%;
+    margin: 10px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 60px 20px;
+    text-align: center;
+}
+.testimonial {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #e9ecef;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Contact Us Section */
+.contact {
+    padding: 60px 20px;
+    text-align: center;
+}
+.contact form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.contact input, .contact textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.contact button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Footer */
+.footer {
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+}
