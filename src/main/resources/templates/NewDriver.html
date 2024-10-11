@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistics</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/signup.css}">
+</head>
+<body>
+
+    <div class="card">
+        <h2>Create New Driver</h2>
+        <form th:action="${/NewDriver}" th:object="${driverCreate}" method="post">
+
+            <div class="mb-3">
+                <label for="fname" class="form-label"></label>
+                <input class="form-control" id="fname" name="firstName" placeholder="Enter First Name" required th:field="${driverCreate.firstName}">
+            </div>
+
+            <div class="mb-3">
+                <label for="lname" class="form-label"></label>
+                <input class="form-control" id="lname" name="lastName" placeholder="Enter Last Name" required th:field="${driverCreate.lastName}">
+            </div>
+
+            <div class="mb-3">
+                <label for="phone" class="form-label"></label>
+                <input class="form-control" id="phone" name="phone" placeholder="Enter Phone Number" required th:field="${driverCreate.phone}">
+            </div>
+
+            <div class="mb-3">
+                <label for="phone" class="form-label"></label>
+                <input class="form-control" id="address" name="address" placeholder="Enter Address" required th:field="${driverCreate.address}">
+            </div>
+
+            <div class="mb-3">
+                <label for="phone" class="form-label"></label>
+                <input class="form-control" id="gender" name="gender" placeholder="Enter Gender" required th:field="${driverCreate.gender}">
+            </div>
+
+
+            <section class="links">
+                <button type="submit" class="btn btn-primary btn-md" id="submit">Insert</button>
+
+                <a href="#" th:href="@{/StaffDriver}" class="btn btn-primary btn-md">Cancel</a>
+            </section>
+            
+        </form>
+    </div>
+        
+</body>
+</html>

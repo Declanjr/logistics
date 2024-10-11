@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>User Management</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <div class="container" sec:authorize="hasRole('ADMIN')">
+        <h2>User Management</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Current Roles</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.roles}"></td>
+                    <td>
+                        <!-- Only show promote buttons if user isn't already in that role -->
+                        <form th:unless="${user.roles.contains(T(com.auca.logistics.Model.Role).MANAGER)}"
+                              th:action="@{/admin/users/{id}/promote/manager(id=${user.id})}" 
+                              method="post" style="display: inline;">
+                            <button type="submit" class="btn btn-warning">Promote to Manager</button>
+                        </form>
+                        
+                        <form th:unless="${user.roles.contains(T(com.auca.logistics.Model.Role).ADMIN)}"
+                              th:action="@{/admin/users/{id}/promote/admin(id=${user.id})}" 
+                              method="post" style="display: inline;">
+                            <button type="submit" class="btn btn-danger">Promote to Admin</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+Last edited 59 minutes ago
+
+

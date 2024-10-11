@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Home</title>
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #333;
+            padding: 20px;
+            color: white;
+        }
+
+        .sidebar-header {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar-menu a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar-menu a:hover {
+            background-color: #444;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header" th:text="${sidebarTitle}">Dashboard</div>
+        <ul class="sidebar-menu">
+            <li><a href="#" th:href="@{/home}">Home</a></li>
+            <li><a href="#" th:href="@{/StaffDriver}">Drivers</a></li>
+            <li><a href="#" th:href="@{/StaffShipments}">Shipments</a></li>
+            <li><a href="#" th:href="@{/logout}">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <h1>DRIVER DASHBOARD</h1>
+
+        <a href="#" th:href="@{/NewDriver}" class="btn btn-primary">Insert New Driver</a>
+
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Names</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Gender</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody class="table-group-divider">
+
+               <tr th:each = "driver : ${drivers}">
+                <td th:text="${driver.id}"></td>
+                <td th:text="@{${driver.firstName} + ' ' + ${driver.lastName}}"></td>
+                <td th:text="${driver.phone}"></td>
+                <td th:text="${driver.address}"></td>
+                <td th:text="${driver.gender}"></td>
+                
+                <td style="white-space: nowrap">
+                    <a href="#" th:href="@{/StaffDriverEdit(id=${driver.id})}" class="btn btn-primary btn-sm">Edit</a>
+                    <a class="btn btn-danger btn-sm"
+                    th:href="@{/StaffDriverDelete(id=${driver.id})}" onclick="return confirm('Are you sure')">Delete</a>
+                </td>
+               </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>

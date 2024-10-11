@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Home</title>
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #333;
+            padding: 20px;
+            color: white;
+        }
+
+        .sidebar-header {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar-menu a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar-menu a:hover {
+            background-color: #444;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header" th:text="${sidebarTitle}">Dashboard</div>
+        <ul class="sidebar-menu">
+            <li><a href="#" th:href="@{/home}">Home</a></li>
+            <li><a href="#" th:href="@{/StaffDriver}">Drivers</a></li>
+            <li><a href="#" th:href="@{/StaffShipments}">Shipments</a></li>
+            <li><a href="#" th:href="@{/logout}">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <h1>Welcome to the  Staff Dashboard</h1>
+
+        <a href="#" th:href="@{/StaffDriver}" class="btn btn-primary"> View Drivers</a>
+        <a href="#" th:href="@{/StaffShipments}" class="btn btn-secondary">View Shipments</a>
+    </div>
+</body>
+</html>
