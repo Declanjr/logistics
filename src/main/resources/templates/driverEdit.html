@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistics</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2 class="form-title">Edit Driver</h2>
+        <form action="StaffDriver/driverEdit" th:object="${driverCreate}" method="post">
+
+            <div class="mb-3">
+                <label for="firstName" class="form-label">ID</label>
+                <input type="text" class="form-control" id="Id" th:value="${Id}" name="Id" required readonly>
+            </div>
+
+            <div class="mb-3">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstName" th:value="${firstName}" name="firstName" placeholder="First Name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastName" th:value="${lastName}" name="lastName" placeholder="Last Name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="tel" class="form-control" id="phone" th:value="${phone}" name="phone" placeholder="Phone Number" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" th:value="${address}" name="address" placeholder="Address" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="gender" class="form-label">Gender</label>
+                <input type="text" class="form-control" id="address" th:value="${address}" name="address" placeholder="Address" required>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a th:href="@{/StaffDriver}" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+</html>

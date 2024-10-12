@@ -1,6 +1,6 @@
 package com.auca.logistics.Model;
 
-public class DriverCreate {
+public class DriverDto {
 
     private  String firstName;
 

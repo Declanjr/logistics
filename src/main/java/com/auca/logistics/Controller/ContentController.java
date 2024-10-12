@@ -20,6 +20,16 @@ public class ContentController {
         return  "login";
     }  
 
+    @GetMapping("/drivercreate")
+    public String createdriver(){
+        return  "drivercreate";
+    } 
+
+    @GetMapping("/driverEdit")
+    public String editdriver(){
+        return  "driverEdit";
+    } 
+
     @GetMapping("/signup")
     public String signup(){
         return "signup";
@@ -29,6 +39,17 @@ public class ContentController {
     public String home(){
         return "StaffHome";
     }
+
+    @GetMapping("shipments/index")
+    public String shipmentshome(){
+        return "shipments/index";
+    }
+
+    @GetMapping("shipments/create")
+    public String shipmentscreate(){
+        return "shipments/create";
+    }
+
     
     
 }

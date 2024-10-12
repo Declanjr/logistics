@@ -1,9 +1,13 @@
 package com.auca.logistics.Model;
 
+
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,6 +23,9 @@ public class Driver {
     private String phone;
     private String address;
     private String gender;
+
+    @OneToMany(mappedBy="driver")
+    private List<Shipments> Shipments;
 
     public int getId() {
         return id;
@@ -66,5 +73,13 @@ public class Driver {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public List<Shipments> getShipments() {
+        return Shipments;
+    }
+
+    public void setShipments(List<Shipments> Shipments) {
+        this.Shipments = Shipments;
     }
 }

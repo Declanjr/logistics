@@ -63,7 +63,7 @@
         <ul class="sidebar-menu">
             <li><a href="#" th:href="@{/home}">Home</a></li>
             <li><a href="#" th:href="@{/StaffDriver}">Drivers</a></li>
-            <li><a href="#" th:href="@{/StaffShipments}">Shipments</a></li>
+            <li><a href="#" th:href="@{shipments/index}">Shipments</a></li>
             <li><a href="#" th:href="@{/logout}">Logout</a></li>
         </ul>
     </div>
@@ -72,7 +72,7 @@
         <h1>Welcome to the  Staff Dashboard</h1>
 
         <a href="#" th:href="@{/StaffDriver}" class="btn btn-primary"> View Drivers</a>
-        <a href="#" th:href="@{/StaffShipments}" class="btn btn-secondary">View Shipments</a>
+        <a href="/logistics/src/main/resources/templates/shipments/index.html" class="btn btn-secondary">View Shipments</a>
     </div>
 </body>
 </html>

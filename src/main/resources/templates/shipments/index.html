@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Home</title>
-    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <style>
         * {
             margin: 0;
@@ -122,30 +122,42 @@
     </div>
 
     <div class="main-content">
-        <h1>DRIVER DASHBOARD</h1>
-        <a href="#" th:href="@{/drivercreate}" class="btn btn-primary">Insert New Driver</a>
+        <h1>SHIPMENTS DASHBOARD</h1>
+        <a href="#" th:href="@{shipments/create}" class="btn btn-primary">Insert New Shipment</a>
         
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Names</th>
-                    <th>Phone</th>
-                    <th>Address</th>
-                    <th>Gender</th>
+                    <th>Content</th>
+                    <th>Sender</th>
+                    <th>Receiver</th>
+                    <th>Arrival Destination</th>
+                    <th>Departure Destination</th>
+                    <th>Departure Date</th>
+                    <th>Arrival Date</th>
+                    <th>Status</th>
+                    <th>Cost</th>
+                    <th>driver Id</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-               <tr th:each="driver : ${drivers}">
-                   <td th:text="${driver.id}"></td>
-                   <td th:text="${driver.firstName + ' ' + driver.lastName}"></td>
-                   <td th:text="${driver.phone}"></td>
-                   <td th:text="${driver.address}"></td>
-                   <td th:text="${driver.gender}"></td>
+               <tr th:each="shipment : ${shipments}">
+                   <td th:text="${shipment.id}"></td>
+                   <td th:text="${shipment.content}"></td>
+                   <td th:text="${shipment.sender}"></td>
+                   <td th:text="${shipment.receiver}"></td>
+                   <td th:text="${shipment.arrivaldestination}"></td>
+                   <td th:text="${shipment.departuredestination}"></td>
+                   <td th:text="${shipment.departuredate}"></td>
+                   <td th:text="${shipment.arrivaldate}"></td>
+                   <td th:text="${shipment.status}"></td>
+                   <td th:text="${shipment.cost}"></td>
+                   <td th:text="${shipment.driver_id}"></td>
                    <td style="white-space: nowrap">
-                       <a href="#" th:href="@{/driverEdit(id=${driver.id})}" class="btn btn-primary btn-sm">Edit</a>
-                       <a class="btn btn-danger btn-sm" th:href="@{/StaffDriver/driverDelete(id=${driver.id})}" onclick="return confirm('Are you sure')">Delete</a>
+                       <a href="#" th:href="@{/shipments/edit(id=${shipment.id})}" class="btn btn-primary btn-sm">Edit</a>
+                       <a class="btn btn-danger btn-sm" th:href="@{/shipments/delete(id=${shipment.id})}" onclick="return confirm('Are you sure')">Delete</a>
                    </td>
                </tr>
             </tbody>

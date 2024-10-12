@@ -25,7 +25,7 @@ import lombok.AllArgsConstructor;
 public class SecurityConfig {
 
     @Autowired
-    private final MyAppUserService appUserService;
+    private final MyAppUserService appUserService; 
 
     @Bean
     public UserDetailsService userDetailsService(){
@@ -46,22 +46,29 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
-        .csrf(AbstractHttpConfigurer::disable)
-        .formLogin(httpForm ->{
-            httpForm
-            .loginPage("/login").permitAll();
-            httpForm.defaultSuccessUrl("/StaffHome",true);
-        })
-
-        .authorizeHttpRequests(registry ->{
-            registry.requestMatchers("/","/signup" , "/css/**" , "/js/**").permitAll();
-            registry.anyRequest().authenticated();
-        })
-
-        .build();
+            .csrf(AbstractHttpConfigurer::disable)
+            .formLogin(httpForm -> {
+                httpForm
+                    .loginPage("/login").permitAll();
+                    httpForm.defaultSuccessUrl("/StaffHome", true);
+            })
+            .authorizeHttpRequests(registry -> {
+                // Public endpoints
+                registry.requestMatchers("/", "/signup", "/css/**", "/js/**").permitAll();
+            
+                // Admin-specific endpoints
+                registry.requestMatchers("/admin/**").hasAuthority("ADMIN");
+            
+                // User-specific endpoints
+                registry.requestMatchers("/StaffHome/**", "/StaffDriver/**").permitAll();
+            
+                // Any other request must be authenticated
+                registry.anyRequest().authenticated();
+            })
+            
+            .build();
     }
     
 }

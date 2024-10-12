@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistics</title>
+</head>
+<body>
+    
+    <div class="row">
+    <h2>Create new Shipments</h2>
+
+    <form method="post"  th:object="${shipmentDto}">
+        <div class="row mb-3">
+            <label class="col-form-label">Content</label>
+            <div class="col-sm-8">
+                <input class="form-control" id="content" th:value="${shipmentDto.content}" name="content">
+                <p th:if="${#fields.hasErrors('content')}" th:errorclass="text-danger" th:errors="${shipmentDto.content}"></p>
+            </div>
+        </div>
+<!-- 
+        <div class="row mb-3">
+            <label class="col-form-label">Sender</label>
+            <div class="col-sm-8">
+                <input class="form-control" th:field="${shipmentDto.sender}">
+                <p th:if="${#fields.hasErrors('sender')}" th:errorclass="text-danger" th:errors="${shipmentDto.sender}"></p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-form-label">Receiver</label>
+            <div class="col-sm-8">
+                <input class="form-control" th:field="${shipmentDto.receiver}">
+                <p th:if="${#fields.hasErrors('receiver')}" th:errorclass="text-danger" th:errors="${shipmentDto.receiver}"></p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-form-label">Arrival Destination</label>
+            <div class="col-sm-8">
+                <input class="form-control" th:field="${shipmentDto.ArrivalDestination}">
+                <p th:if="${#fields.hasErrors('ArrivalDestination')}" th:errorclass="text-danger" th:errors="${shipmentDto.ArrivalDestination}"></p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-form-label">Departure Destination</label>
+            <div class="col-sm-8">
+                <input class="form-control" th:field="${shipmentDto.Departuredestination}">
+                <p th:if="${#fields.hasErrors('content')}" th:errorclass="text-danger" th:errors="${shipmentDto.Departuredestination}"></p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-form-label">Departure Date</label>
+            <div class="col-sm-8">
+                <input type="date" class="form-control" th:field="${shipmentDto.Departuredate}">
+                <p th:if="${#fields.hasErrors('Departuredate')}" th:errorclass="text-danger" th:errors="${shipmentDto.Departmentdate}"></p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-form-label">Arrival Date</label>
+            <div class="col-sm-8">
+                <input type="date" class="form-control" th:field="${shipmentDto.Arrivaldate}">
+                <p th:if="${#fields.hasErrors('Arrivaldate')}" th:errorclass="text-danger" th:errors="${shipmentDto.Arrivaldate}"></p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-form-label">Status</label>
+            <div class="col-sm-8">
+                <input class="form-control" th:field="${shipmentDto.Status}">
+                <p th:if="${#fields.hasErrors('Status')}" th:errorclass="text-danger" th:errors="${shipmentDto.Status}"></p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-form-label">Cost</label>
+            <div class="col-sm-8">
+                <input class="form-control" th:field="${shipmentDto.Cost}">
+                <p th:if="${#fields.hasErrors('Cost')}" th:errorclass="text-danger" th:errors="${shipmentDto.Cost}"></p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-form-label">Driver Id</label>
+            <div class="col-sm-8">
+                <input class="form-control" th:field="${shipmentDto.driver_id}">
+                <p th:if="${#fields.hasErrors('driver_id')}" th:errorclass="text-danger" th:errors="${shipmentDto.driver_id}"></p>
+            </div>
+        </div> -->
+
+        <div class="row">
+            <div class="offset-sm-4 col-sm-4 d-grid">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+
+            <div class="col-sm-4 d-grid">
+                <a href="/logistics/src/main/resources/templates/shipments/index.html" class="btn btn-outline-primary"></a>
+            </div>
+        </div>
+
+    </form>
+    </div>
+</body>
+</html>
