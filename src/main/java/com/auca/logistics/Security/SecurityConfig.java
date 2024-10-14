@@ -1,74 +1,62 @@
 package com.auca.logistics.Security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 
-import com.auca.logistics.Model.MyAppUserService;
-
-import lombok.AllArgsConstructor;
-
-
+import com.auca.logistics.Service.MyAppUserService;
 
 @Configuration
 @EnableWebSecurity
-@AllArgsConstructor
 public class SecurityConfig {
 
-    @Autowired
-    private final MyAppUserService appUserService; 
+    private final MyAppUserService myAppUserService;
 
-    @Bean
-    public UserDetailsService userDetailsService(){
-        return appUserService;
+    public SecurityConfig(MyAppUserService myAppUserService) {
+        this.myAppUserService = myAppUserService;
     }
 
-    @Bean
-    public AuthenticationProvider authenticationProvider(){
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(appUserService);
-        provider.setPasswordEncoder(passwordEncoder());
-        return provider;
-    }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    return http
+            .csrf(AbstractHttpConfigurer::disable)
+            .authorizeHttpRequests(req -> req
+                    .requestMatchers("/index","/login/**", "/signup/**","/css/**","/js/**", "/StaffDriver/**", "/shipments/**", "/driverEdit/**", "/drivercreate/**","/driverdelete/**","/shipments/create","/shipments/edit").permitAll()
+                    .requestMatchers("/StaffHome").hasRole("STAFF")
+                    .anyRequest().authenticated()
+            )
+            .userDetailsService(myAppUserService)
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .exceptionHandling(e -> e
+                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
+            )
+            .logout(l -> l
+                    .logoutUrl("/logout")
+                    .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
+            )
+            .build();
+}
+
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity
-            .csrf(AbstractHttpConfigurer::disable)
-            .formLogin(httpForm -> {
-                httpForm
-                    .loginPage("/login").permitAll();
-                    httpForm.defaultSuccessUrl("/StaffHome", true);
-            })
-            .authorizeHttpRequests(registry -> {
-                // Public endpoints
-                registry.requestMatchers("/", "/signup", "/css/**", "/js/**").permitAll();
-            
-                // Admin-specific endpoints
-                registry.requestMatchers("/admin/**").hasAuthority("ADMIN");
-            
-                // User-specific endpoints
-                registry.requestMatchers("/StaffHome/**", "/StaffDriver/**").permitAll();
-            
-                // Any other request must be authenticated
-                registry.anyRequest().authenticated();
-            })
-            
-            .build();
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
+        return configuration.getAuthenticationManager();
     }
-    
 }

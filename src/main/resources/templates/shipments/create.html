@@ -10,7 +10,7 @@
     <div class="row">
     <h2>Create new Shipments</h2>
 
-    <form method="post"  th:object="${shipmentDto}">
+    <form action="create" method="post"  th:object="${shipmentDto}">
         <div class="row mb-3">
             <label class="col-form-label">Content</label>
             <div class="col-sm-8">
@@ -18,11 +18,11 @@
                 <p th:if="${#fields.hasErrors('content')}" th:errorclass="text-danger" th:errors="${shipmentDto.content}"></p>
             </div>
         </div>
-<!-- 
+
         <div class="row mb-3">
             <label class="col-form-label">Sender</label>
             <div class="col-sm-8">
-                <input class="form-control" th:field="${shipmentDto.sender}">
+                <input class="form-control" id="sender" th:value="${shipmentDto.sender}" name="sender">
                 <p th:if="${#fields.hasErrors('sender')}" th:errorclass="text-danger" th:errors="${shipmentDto.sender}"></p>
             </div>
         </div>
@@ -30,7 +30,7 @@
         <div class="row mb-3">
             <label class="col-form-label">Receiver</label>
             <div class="col-sm-8">
-                <input class="form-control" th:field="${shipmentDto.receiver}">
+                <input class="form-control" id="receiver" th:field="${shipmentDto.receiver}" name="receiver">
                 <p th:if="${#fields.hasErrors('receiver')}" th:errorclass="text-danger" th:errors="${shipmentDto.receiver}"></p>
             </div>
         </div>
@@ -38,7 +38,7 @@
         <div class="row mb-3">
             <label class="col-form-label">Arrival Destination</label>
             <div class="col-sm-8">
-                <input class="form-control" th:field="${shipmentDto.ArrivalDestination}">
+                <input class="form-control" id="ArrivalDestination" th:value="${shipmentDto.ArrivalDestination}" name="ArrivalDestination">
                 <p th:if="${#fields.hasErrors('ArrivalDestination')}" th:errorclass="text-danger" th:errors="${shipmentDto.ArrivalDestination}"></p>
             </div>
         </div>
@@ -46,7 +46,7 @@
         <div class="row mb-3">
             <label class="col-form-label">Departure Destination</label>
             <div class="col-sm-8">
-                <input class="form-control" th:field="${shipmentDto.Departuredestination}">
+                <input class="form-control" id="DepartureDestination" th:value="${shipmentDto.Departuredestination}" name="DepartureDestination">
                 <p th:if="${#fields.hasErrors('content')}" th:errorclass="text-danger" th:errors="${shipmentDto.Departuredestination}"></p>
             </div>
         </div>
@@ -54,7 +54,7 @@
         <div class="row mb-3">
             <label class="col-form-label">Departure Date</label>
             <div class="col-sm-8">
-                <input type="date" class="form-control" th:field="${shipmentDto.Departuredate}">
+                <input type="date" class="form-control" id="Departuredate" th:value="${shipmentDto.Departuredate}" name="Departuredate">
                 <p th:if="${#fields.hasErrors('Departuredate')}" th:errorclass="text-danger" th:errors="${shipmentDto.Departmentdate}"></p>
             </div>
         </div>
@@ -62,7 +62,7 @@
         <div class="row mb-3">
             <label class="col-form-label">Arrival Date</label>
             <div class="col-sm-8">
-                <input type="date" class="form-control" th:field="${shipmentDto.Arrivaldate}">
+                <input type="date" class="form-control" id="Arrivaldate" th:value="${shipmentDto.Arrivaldate}" name="Arrivaldate">
                 <p th:if="${#fields.hasErrors('Arrivaldate')}" th:errorclass="text-danger" th:errors="${shipmentDto.Arrivaldate}"></p>
             </div>
         </div>
@@ -70,7 +70,7 @@
         <div class="row mb-3">
             <label class="col-form-label">Status</label>
             <div class="col-sm-8">
-                <input class="form-control" th:field="${shipmentDto.Status}">
+                <input class="form-control" id="Status" th:value="${shipmentDto.Status}" name="Status">
                 <p th:if="${#fields.hasErrors('Status')}" th:errorclass="text-danger" th:errors="${shipmentDto.Status}"></p>
             </div>
         </div>
@@ -78,7 +78,7 @@
         <div class="row mb-3">
             <label class="col-form-label">Cost</label>
             <div class="col-sm-8">
-                <input class="form-control" th:field="${shipmentDto.Cost}">
+                <input class="form-control" id="Cost" th:value="${shipmentDto.Cost}" name="Cost">
                 <p th:if="${#fields.hasErrors('Cost')}" th:errorclass="text-danger" th:errors="${shipmentDto.Cost}"></p>
             </div>
         </div>
@@ -86,10 +86,10 @@
         <div class="row mb-3">
             <label class="col-form-label">Driver Id</label>
             <div class="col-sm-8">
-                <input class="form-control" th:field="${shipmentDto.driver_id}">
+                <input class="form-control" id="driver_id" th:field="${shipmentDto.driver_id}" name="driver_id">
                 <p th:if="${#fields.hasErrors('driver_id')}" th:errorclass="text-danger" th:errors="${shipmentDto.driver_id}"></p>
             </div>
-        </div> -->
+        </div>
 
         <div class="row">
             <div class="offset-sm-4 col-sm-4 d-grid">

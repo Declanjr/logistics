@@ -3,15 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logistics</title>
+    <title>Logistics - Login</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{/css/login.css} ">
-    
+    <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
 <body>
 
     <div class="card">
         <h2 class="login">LOGIN PAGE</h2>
+        
+        <!-- Error Message Display -->
+        <div th:if="${error}" class="alert alert-danger" role="alert">
+            <span th:text="${error}">Invalid username or password</span>
+        </div>
+        
         <form th:action="@{/login}" method="post">
             <div class="mb-3">
               <label for="username" class="form-label"></label>
@@ -27,5 +32,6 @@
             </section>
         </form>
     </div>
+
 </body>
 </html>

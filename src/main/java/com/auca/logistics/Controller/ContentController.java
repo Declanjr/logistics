@@ -35,19 +35,10 @@ public class ContentController {
         return "signup";
     }
 
-    @GetMapping("/StaffHome")
-    public String home(){
-        return "StaffHome";
-    }
 
     @GetMapping("shipments/index")
     public String shipmentshome(){
         return "shipments/index";
-    }
-
-    @GetMapping("shipments/create")
-    public String shipmentscreate(){
-        return "shipments/create";
     }
 
     
