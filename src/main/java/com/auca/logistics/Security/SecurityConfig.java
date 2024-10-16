@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 import com.auca.logistics.Service.MyAppUserService;
 
@@ -27,28 +28,30 @@ public class SecurityConfig {
         this.myAppUserService = myAppUserService;
     }
 
-
     @Bean
-public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    return http
-            .csrf(AbstractHttpConfigurer::disable)
-            .authorizeHttpRequests(req -> req
-                    .requestMatchers("/index","/login/**", "/signup/**","/css/**","/js/**", "/StaffDriver/**", "/shipments/**", "/driverEdit/**", "/drivercreate/**","/driverdelete/**","/shipments/create","/shipments/edit").permitAll()
-                    .requestMatchers("/StaffHome").hasRole("STAFF")
-                    .anyRequest().authenticated()
-            )
-            .userDetailsService(myAppUserService)
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .exceptionHandling(e -> e
-                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
-            )
-            .logout(l -> l
-                    .logoutUrl("/logout")
-                    .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
-            )
-            .build();
-}
-
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        return http
+                .csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(req -> req
+                        .requestMatchers("/index", "/login/**", "/signup/**", "/css/**", "/js/**", "/StaffDriver/**", "/shipments/**", "/driverEdit/**", "/drivercreate/**", "/driverdelete/**", "/shipments/create", "/shipments/edit","/forgot/**").permitAll()
+                        .requestMatchers("/StaffHome").hasRole("STAFF")
+                        .anyRequest().authenticated()
+                )
+                .userDetailsService(myAppUserService)
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .exceptionHandling(e -> e
+                    .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
+                )
+                .formLogin(login -> login
+                    .loginPage("/login")
+                    .successHandler(authenticationSuccessHandler())
+                )
+                .logout(l -> l
+                        .logoutUrl("/logout")
+                        .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
+                )
+                .build();
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -58,5 +61,12 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
+    }
+
+    @Bean
+    public SimpleUrlAuthenticationSuccessHandler authenticationSuccessHandler() {
+        SimpleUrlAuthenticationSuccessHandler successHandler = new SimpleUrlAuthenticationSuccessHandler("/StaffHome");
+        successHandler.setAlwaysUseDefaultTargetUrl(true);
+        return successHandler;
     }
 }

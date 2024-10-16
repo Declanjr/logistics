@@ -1,0 +1,17 @@
+{
+    "title": "Accueil du Personnel",
+    "dashboardTitle": "Tableau de Bord",
+    "home": "Accueil",
+    "drivers": "Chauffeurs",
+    "shipments": "Expéditions",
+    "logout": "Déconnexion",
+    "chooseLanguage": "Choisissez la Langue: ",
+    "driverDashboard": "TABLEAU DE BORD DES CHAUFFEURS",
+    "insertNewDriver": "Insérer un Nouveau Chauffeur",
+    "filterByGender": "Filtrer par Genre",
+    "male": "Homme",
+    "female": "Femme",
+    "downloadRecords": "Télécharger les Enregistrements",
+    "edit": "Modifier",
+    "delete": "Supprimer"
+}

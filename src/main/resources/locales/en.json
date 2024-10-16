@@ -1,0 +1,17 @@
+{
+    "Title": "Staff Home",
+    "dashboardTitle": "Dashboard",
+    "Home": "Home",
+    "Drivers": "Drivers",
+    "Shipments": "Shipments",
+    "logout": "Logout",
+    "Choose Language": "Choose Language: ",
+    "Driver Dashboard": "DRIVER DASHBOARD",
+    "Insert New Driver": "Insert New Driver",
+    "filter By Gender": "Filter by Gender",
+    "Male": "Male",
+    "Female": "Female",
+    "Download Records": "Download Records",
+    "Edit": "Edit",
+    "Delete": "Delete"
+}

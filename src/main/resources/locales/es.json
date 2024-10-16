@@ -1,0 +1,17 @@
+{
+    "title": "Inicio del Personal",
+    "dashboardTitle": "Tablero",
+    "home": "Inicio",
+    "drivers": "Conductores",
+    "shipments": "Envíos",
+    "logout": "Cerrar sesión",
+    "chooseLanguage": "Elige idioma: ",
+    "driverDashboard": "TABLERO DE CONDUCTORES",
+    "insertNewDriver": "Insertar nuevo conductor",
+    "filterByGender": "Filtrar por género",
+    "male": "Masculino",
+    "female": "Femenino",
+    "downloadRecords": "Descargar registros",
+    "edit": "Editar",
+    "delete": "Eliminar"
+}
