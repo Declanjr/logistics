@@ -1,5 +1,6 @@
 package com.auca.logistics.Model;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
@@ -31,6 +32,8 @@ public class MyAppUser implements UserDetails {
     private Date date;
     private int number;
     private String password;
+     private String resetToken;
+    private LocalDateTime tokenExpiryDate;
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20)

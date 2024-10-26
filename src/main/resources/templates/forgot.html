@@ -7,13 +7,20 @@
     <link rel="stylesheet" th:href="@{css/forgot.css}">
 </head>
 <body>
-    
     <div class="card">
-    <h1>FORGOT PASSWORD</h1>
-    <p>Enter your Email address</p>
-    <input type="email" class="email" placeholder="name@gmail.com"> <br>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</div>
-
+        <h1>FORGOT PASSWORD</h1>
+        <form th:action="@{/forgot}" method="post">
+            <p>Enter your Email address</p>
+            <input type="email" name="email" class="email" placeholder="name@gmail.com" required> <br>
+            
+            <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+            <div th:if="${message}" class="alert alert-success" th:text="${message}"></div>
+            
+            <div class="links">
+                <button type="submit" class="btn btn-primary">Submit</button> <br>
+                <a th:href="@{/login}">Back to Login</a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
