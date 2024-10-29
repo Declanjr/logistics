@@ -39,6 +39,7 @@ public class PasswordResetService {
     private void sendResetEmail(String email, String token) {
         String resetUrl = "http://localhost:8080/resetPassword?token=" + token;
         SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("declannuwagaba02@gmail.com");
         message.setTo(email);
         message.setSubject("Password Reset Request");
         message.setText("Click the link to reset your password: " + resetUrl);

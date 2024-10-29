@@ -17,6 +17,7 @@ public class EmailService {
 
     public void sendResetToken(String to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("declannuwagaba02@gmail.com");
         message.setTo(to);
         message.setSubject(subject);
         message.setText(text);
