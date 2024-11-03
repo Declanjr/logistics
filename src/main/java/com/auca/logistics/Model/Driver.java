@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table (name = "drivers")
-public class Driver {
+public class Driver  extends  Audit{
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -23,6 +23,10 @@ public class Driver {
     private String phone;
     private String address;
     private String gender;
+    private String fileName; 
+
+    private byte[] fileData;
+
 
     @OneToMany(mappedBy="driver")
     private List<Shipments> Shipments;
@@ -81,5 +85,21 @@ public class Driver {
 
     public void setShipments(List<Shipments> Shipments) {
         this.Shipments = Shipments;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+    
+    public byte[] getFileData() {
+        return fileData;
+    }
+
+    public void setFileData(byte[] fileData) {
+        this.fileData = fileData;
     }
 }

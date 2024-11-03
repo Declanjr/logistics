@@ -29,7 +29,7 @@
 
     <div class="form-container">
         <h2 class="form-title">Add New Driver</h2>
-        <form action="StaffDriver/drivercreate" th:object="${driverCreate}" th:method="post">
+        <form action="StaffDriver/drivercreate" th:object="${driverCreate}" th:method="post" enctype="multipart/form-data">
 
             <div class="mb-3">
                 <label for="firstName" class="form-label">First Name</label>
@@ -60,6 +60,12 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
+
+            <div class="mb-3">
+                <label for="file" class="form-label">Choose File to upload</label>
+                <input type="file" class="form-control" id="file" th:value="${file}" name="fileName" required>
+            </div>
+
 
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary">Submit</button>

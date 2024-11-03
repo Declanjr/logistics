@@ -15,7 +15,7 @@
     <div class="sidebar">
         <div class="sidebar-header" data-i18n="dashboardTitle">Dashboard</div>
         <ul class="sidebar-menu">
-            <li><a href="#" th:href="@{/StaffHome}" data-i18n="home">Home</a></li>
+            <li><a href="#" th:href="@{/index}" data-i18n="home">Home</a></li>
             <li><a href="#" th:href="@{/StaffDriver}" data-i18n="drivers">Drivers</a></li>
             <li><a href="#" th:href="@{/shipments/index}" data-i18n="shipments">Shipments</a></li>
             <li><a href="#" th:href="@{/login}" data-i18n="logout">Logout</a></li>
@@ -55,6 +55,7 @@
                     <th onclick="sortTable(2)" data-i18n="Phone">Phone</th>
                     <th onclick="sortTable(3)" data-i18n="Address">Address</th>
                     <th onclick="sortTable(4)" data-i18n="Gender">Gender</th>
+                    <th onclick="sortTable(5)">File</th>
                     <th data-i18n="Action">Action</th>
                 </tr>
             </thead>
@@ -65,6 +66,12 @@
                     <td th:text="${driver.phone}"></td>
                     <td th:text="${driver.address}"></td>
                     <td th:text="${driver.gender}"></td>
+                    <td>
+                        <a th:if="${driver.fileName}" 
+                           th:href="@{/StaffDriver/driverFile(id=${driver.id})}" 
+                           th:text="'View ' + ${driver.fileName}">
+                        </a>
+                    </td>
                     <td style="white-space: nowrap">
                         <a href="#" th:href="@{/driverEdit(id=${driver.id})}" class="btn btn-primary btn-sm"
                             data-i18n="edit">Edit</a>

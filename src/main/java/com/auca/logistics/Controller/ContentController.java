@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 
+
 @Controller
 public class ContentController {
 
@@ -40,6 +41,7 @@ public class ContentController {
     public String shipmentshome(){
         return "shipments/index";
     }
+    
 
     
     
